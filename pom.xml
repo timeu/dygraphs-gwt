@@ -1,7 +1,6 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   
-
   <groupId>com.github.timeu.dygraphs-gwt</groupId>
   <artifactId>dygraphs-gwt-parent</artifactId>
   <version>1.0.0-SNAPSHOT</version>
@@ -10,14 +9,23 @@
   <name>Dygraphs-GWT (Parent)</name>
   <description>GWT wrapper for Dygraphs</description>
   <url>https://github.com/timeu/dygraphs-gwt</url>
+    <organization>
+        <name>GMI</name>
+        <url>http://www.gmi.oeaw.ac.at</url>
+    </organization>
 
   <modules>
     <module>dygraphs-gwt</module>
     <module>dygraphs-gwt-sample</module>
   </modules>
 
+
+
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <gwt.version>2.8.0-SNAPSHOT</gwt.version>
+      <gwt.module>sample.DygraphsGWTSample</gwt.module>
+      <gwt.shortName>dygraphsgwtsample</gwt.shortName>
   </properties>
 
   <licenses>
@@ -43,49 +51,50 @@
   </developers>
 
   <dependencyManagement>
-    <dependencies>
-      <dependency>
-        <groupId>com.google.gwt</groupId>
-        <artifactId>gwt-dev</artifactId>
-        <version>2.5.1</version>
-      </dependency>
-      <dependency>
-        <groupId>com.google.gwt</groupId>
-        <artifactId>gwt-user</artifactId>
-        <version>2.5.1</version>
-      </dependency>
-
-      <dependency>
-        <groupId>junit</groupId>
-        <artifactId>junit</artifactId>
-        <version>4.11</version>
-        <scope>test</scope>
-      </dependency>
-      <dependency>
-        <groupId>org.mockito</groupId>
-        <artifactId>mockito-all</artifactId>
-        <version>1.9.5</version>
-        <scope>test</scope>
-      </dependency>
-
-      <dependency>
-        <groupId>com.github.timeu.dygraphs-gwt</groupId>
-        <artifactId>dygraphs-gwt</artifactId>
-        <version>${project.version}</version>
-      </dependency>
-   </dependencies>
+      <dependencies>
+          <dependency>
+              <groupId>com.google.gwt</groupId>
+              <artifactId>gwt</artifactId>
+              <version>${gwt.version}</version>
+              <type>pom</type>
+              <scope>import</scope>
+          </dependency>
+         <dependency>
+              <groupId>com.github.timeu.dygraphs-gwt</groupId>
+              <artifactId>dygraphs-gwt</artifactId>
+              <version>${project.version}</version>
+          </dependency>
+         <dependency>
+              <groupId>com.github.timeu.dygraphs-gwt</groupId>
+              <artifactId>dygraphs-gwt</artifactId>
+              <version>${project.version}</version>
+              <type>gwt-lib</type>
+          </dependency>
+          <dependency>
+              <groupId>junit</groupId>
+              <artifactId>junit</artifactId>
+              <version>4.11</version>
+              <scope>test</scope>
+          </dependency>
+          <dependency>
+              <groupId>org.mockito</groupId>
+              <artifactId>mockito-all</artifactId>
+              <version>1.9.5</version>
+              <scope>test</scope>
+          </dependency>
+      </dependencies>
   </dependencyManagement>
 
   <build>
-    <pluginManagement>
+  <pluginManagement>
       <plugins>
-        <plugin>
+       <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-compiler-plugin</artifactId>
           <version>3.1</version>
           <configuration>
-            <source>1.6</source>
-            <target>1.6</target>
+            <source>1.8</source>
+            <target>1.8</target>
           </configuration>
         </plugin>
         <plugin>
@@ -101,13 +110,51 @@
             </execution>
           </executions>
         </plugin>
-        <plugin>
+          <plugin>
           <groupId>net.ltgt.gwt.maven</groupId>
           <artifactId>gwt-maven-plugin</artifactId>
-          <version>1.0-alpha-2</version>
+          <version>1.0-rc-2</version>
           <extensions>true</extensions>
+          <configuration>
+              <startupUrls>
+                  <startupUrl>dygraphsgwtsample/index.html</startupUrl>
+              </startupUrls>
+              <compilerArgs>
+                  <compilerArg>-XjsInteropMode</compilerArg>
+                  <compilerArg>JS</compilerArg>
+              </compilerArgs>
+              <devmodeArgs>
+                  <arg>-XjsInteropMode</arg>
+                  <arg>JS</arg>
+                  <devmodeArg>-incremental</devmodeArg>
+              </devmodeArgs>
+              <codeserverArgs>
+                  <arg>-XjsInteropMode</arg>
+                  <arg>JS</arg>
+                  <arg>-incremental</arg>
+              </codeserverArgs>
+              <launcherDir>${project.build.directory}/gwt/launcherDir</launcherDir>
+              <moduleName>${gwt.module}</moduleName>
+              <moduleShortName>${gwt.shortName}</moduleShortName>
+              <sourceLevel>1.8</sourceLevel>
+              <logLevel>INFO</logLevel>
+          </configuration>
         </plugin>
       </plugins>
     </pluginManagement>
   </build>
+
+
+  <repositories>
+    <repository>
+      <id>google-snapshots</id>
+      <url>https://oss.sonatype.org/content/repositories/google-snapshots/</url>
+      <releases>
+        <enabled>false</enabled>
+      </releases>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+    </repository>
+  </repositories>
 </project>

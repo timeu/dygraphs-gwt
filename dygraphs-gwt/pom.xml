@@ -8,7 +8,6 @@
 
   <artifactId>dygraphs-gwt</artifactId>
   <packaging>gwt-lib</packaging>
-
   <name>Dygraphs-GWT</name>
 
   <build>
@@ -16,6 +15,7 @@
       <plugin>
         <groupId>net.ltgt.gwt.maven</groupId>
         <artifactId>gwt-maven-plugin</artifactId>
+        <extensions>true</extensions>
         <configuration>
           <moduleName>com.github.timeu.DygraphsGWT</moduleName>
         </configuration>
@@ -35,7 +35,11 @@
       <groupId>com.google.gwt</groupId>
       <artifactId>gwt-user</artifactId>
     </dependency>
-
+    <dependency>
+      <groupId>com.googlecode.gwt-charts</groupId>
+      <artifactId>gwt-charts</artifactId>
+      <version>0.9.10</version>
+    </dependency>
     <!-- Test dependencies -->
     <dependency>
       <groupId>junit</groupId>

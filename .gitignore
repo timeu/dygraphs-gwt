@@ -1,3 +1,5 @@
+target/
+
 *.class
 
 # Package Files #
@@ -14,4 +16,3 @@ gwt-unitCache/
 # more caches and things from deploy #
 war/WEB-INF/deploy/
 war/WEB-INF/classes/
-

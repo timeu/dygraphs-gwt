@@ -7,7 +7,7 @@
   </parent>
 
   <artifactId>dygraphs-gwt-sample</artifactId>
-  <packaging>war</packaging>
+  <packaging>gwt-app</packaging>
 
   <name>Dygraphs-GWT Sample Application</name>
 
@@ -16,31 +16,32 @@
       <plugin>
         <groupId>net.ltgt.gwt.maven</groupId>
         <artifactId>gwt-maven-plugin</artifactId>
-        <executions>
-          <execution>
-            <goals>
-              <goal>generate-module</goal>
-              <goal>compile</goal>
-            </goals>
-          </execution>
-        </executions>
         <configuration>
-          <moduleName>sample.DygraphsGWTSample</moduleName>
+          <moduleName>${gwt.module}</moduleName>
+          <moduleShortName>${gwt.shortName}</moduleShortName>
         </configuration>
       </plugin>
     </plugins>
   </build>
-
   <dependencies>
     <dependency>
       <groupId>com.google.gwt</groupId>
       <artifactId>gwt-user</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.google.gwt</groupId>
+      <artifactId>gwt-dev</artifactId>
       <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>com.github.timeu.dygraphs-gwt</groupId>
       <artifactId>dygraphs-gwt</artifactId>
-      <scope>provided</scope>
+        <type>gwt-lib</type>
     </dependency>
+    <!--<dependency>
+          <groupId>com.github.timeu.dygraphs-gwt</groupId>
+          <artifactId>dygraphs-gwt</artifactId>
+        <type>jar</type>
+      </dependency>-->
   </dependencies>
 </project>
