@@ -1,7 +1,0 @@
-<module rename-to="dygraphsgwtsample">
-  <inherits name="com.github.timeu.DygraphsGWT"/>
-  <inherits name="com.google.gwt.user.User"/>
-  <inherits name="com.googlecode.gwt.charts.Charts"/>
-  <source path="client"/>
-  <entry-point class="sample.client.SampleEntryPoint"/>
-</module>
