@@ -77,7 +77,7 @@ public class GVizChart extends Widget  {
         return createNativeGVizJso(getElement());
     }
 
-    protected final native GVizChartJs createNativeGVizJso(Element element) /*-{
+    protected final native GVizChartJs createNativeGVizJso(Element container) /*-{
         return new $wnd.Dygraph.GVizChart(container);
     }-*/;
 }
