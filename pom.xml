@@ -26,6 +26,8 @@
     <gwt.version>2.8.0-SNAPSHOT</gwt.version>
       <gwt.module>sample.DygraphsGWTSample</gwt.module>
       <gwt.shortName>dygraphsgwtsample</gwt.shortName>
+      <github.global.server>github</github.global.server>
+      <github.maven.repository>file:///home/GMI/uemit.seren/Code/maven-repository/</github.maven.repository>
   </properties>
 
   <licenses>
@@ -116,6 +118,7 @@
           <version>1.0-rc-2</version>
           <extensions>true</extensions>
           <configuration>
+              <draftCompile>true</draftCompile>
               <startupUrls>
                   <startupUrl>dygraphsgwtsample/index.html</startupUrl>
               </startupUrls>
@@ -143,8 +146,16 @@
       </plugins>
     </pluginManagement>
   </build>
-
-
+    <distributionManagement>
+        <repository>
+            <id>repo</id>
+            <url>${github.maven.repository}/releases/</url>
+        </repository>
+        <snapshotRepository>
+            <id>snapshot-repo</id>
+            <url>${github.maven.repository}/snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
   <repositories>
     <repository>
       <id>google-snapshots</id>
