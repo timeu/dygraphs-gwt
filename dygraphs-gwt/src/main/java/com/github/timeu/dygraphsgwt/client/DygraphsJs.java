@@ -1,24 +1,22 @@
 package com.github.timeu.dygraphsgwt.client;
 
 import com.github.timeu.dygraphsgwt.client.callbacks.Annotation;
+import com.github.timeu.dygraphsgwt.client.callbacks.Area;
 import com.github.timeu.dygraphsgwt.client.callbacks.ReadyCallback;
-import com.github.timeu.dygraphsgwt.client.options.interactions.InteractionModel;
-import com.google.gwt.core.client.js.JsProperty;
-import com.google.gwt.core.client.js.JsType;
 import com.google.gwt.dom.client.Element;
-import com.google.gwt.dom.client.NativeEvent;
-import com.google.gwt.event.dom.client.MouseWheelEvent;
+import jsinterop.annotations.JsPackage;
+import jsinterop.annotations.JsProperty;
+import jsinterop.annotations.JsType;
 
-import java.util.List;
 
 /**
  * Created by uemit.seren on 7/24/15.
  */
 
-@JsType(prototype = "Dygraph")
+@JsType(isNative = true,namespace = JsPackage.GLOBAL,name="Dygraphs")
 public interface DygraphsJs {
 
-    void updateOptions(DygraphsOptions options,boolean noRedraw);
+    void updateOptions(DygraphsOptions options, boolean noRedraw);
 
     void resize();
 
@@ -33,6 +31,10 @@ public interface DygraphsJs {
     double[] toDomCoords(Double x,Double y,int axis);
 
     double[] toDataCoords(double canvasx, double canvasy);
+
+    double toDataXCoord(double cancasx);
+
+    double toDataYCoord(double cancasy);
 
     @JsProperty
     Element getGraphDiv();
@@ -53,9 +55,15 @@ public interface DygraphsJs {
 
     double toDomXCoord(Number xStart);
 
+    double toDomYCoord(Number yStart, int axis);
+
     double[] yAxisRange(int axis);
 
     double[][] yAxisRanges();
 
     String[] getColors();
+
+    Area getArea();
+
+    void drawGraph_();
 }

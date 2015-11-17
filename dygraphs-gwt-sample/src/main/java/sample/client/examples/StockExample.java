@@ -2,7 +2,6 @@ package sample.client.examples;
 
 import com.github.timeu.dygraphsgwt.client.Dygraphs;
 import com.github.timeu.dygraphsgwt.client.DygraphsOptions;
-import com.github.timeu.dygraphsgwt.client.DygraphsOptionsImpl;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.FlowPanel;
@@ -37,9 +36,9 @@ public class StockExample extends Composite {
     }
 
     private void initDygraphs() {
-        DygraphsOptions options = new DygraphsOptionsImpl();
-        options.setLogscale(true);
-        options.setCustomBars(true);
+        DygraphsOptions options = new DygraphsOptions();
+        options.logscale = true;
+        options.customBars = true;
         dygraphs = new Dygraphs(DataUtils.stockData(),options);
         dygraphs.setPixelSize(600,300);
         panel.add(dygraphs);
@@ -47,8 +46,8 @@ public class StockExample extends Composite {
     }
 
     private void setScale(boolean isLog) {
-        DygraphsOptions options = new DygraphsOptionsImpl();
-        options.setLogscale(isLog);
+        DygraphsOptions options = new DygraphsOptions();
+        options.logscale = isLog;
         logBtn.setEnabled(!isLog);
         linearBtn.setEnabled(isLog);
         dygraphs.getJSO().updateOptions(options,false);

@@ -2,13 +2,9 @@ package sample.client.examples;
 
 import com.github.timeu.dygraphsgwt.client.Dygraphs;
 import com.github.timeu.dygraphsgwt.client.DygraphsOptions;
-import com.github.timeu.dygraphsgwt.client.DygraphsOptionsImpl;
 import com.google.gwt.dom.client.Style;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.FlowPanel;
-import com.google.gwt.user.client.ui.ResizeComposite;
-import com.google.gwt.user.client.ui.ResizeLayoutPanel;
-import com.google.gwt.user.client.ui.SimpleLayoutPanel;
 import sample.client.DataUtils;
 
 /**
@@ -31,9 +27,9 @@ public class ResizeableExample extends Composite {
     protected void onAttach() {
         super.onAttach();
         if (dygraphs == null) {
-            DygraphsOptions options = new DygraphsOptionsImpl();
-            options.setRollPeriod(7);
-            options.setErrorBars(true);
+            DygraphsOptions options = new DygraphsOptions();
+            options.rollPeriod = 7;
+            options.errorBars = true;
             dygraphs = new Dygraphs(DataUtils.noisyData(), options);
             dygraphs.setHeight("100%");
             dygraphs.setWidth("100%");

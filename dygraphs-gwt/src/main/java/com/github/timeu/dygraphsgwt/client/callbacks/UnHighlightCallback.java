@@ -1,7 +1,8 @@
 package com.github.timeu.dygraphsgwt.client.callbacks;
 
-import com.google.gwt.core.client.js.JsFunction;
+
 import com.google.gwt.dom.client.NativeEvent;
+import jsinterop.annotations.JsFunction;
 
 /**
  * Created by uemit.seren on 8/6/15.

@@ -3,21 +3,23 @@ package com.github.timeu.dygraphsgwt.client.options.interactions;
 import com.github.timeu.dygraphsgwt.client.DygraphsJs;
 import com.google.gwt.core.client.JsArray;
 import com.google.gwt.core.client.JsArrayMixed;
-import com.google.gwt.core.client.js.JsProperty;
-import com.google.gwt.core.client.js.JsType;
 import com.google.gwt.dom.client.NativeEvent;
+import jsinterop.annotations.JsPackage;
+import jsinterop.annotations.JsProperty;
+import jsinterop.annotations.JsType;
 
 /**
  * Created by uemit.seren on 7/30/15.
  */
 
-@JsType
+@JsType(isNative = true,namespace = JsPackage.GLOBAL,name="Object")
 public interface InteractionContext {
 
     /**
      * @return left distance of the canvas in DOM coordinates
      */
-    @JsProperty double getPx();
+    @JsProperty
+    double getPx();
 
     /**
      *

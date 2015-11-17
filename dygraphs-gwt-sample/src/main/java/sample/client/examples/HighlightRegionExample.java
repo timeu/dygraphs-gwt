@@ -2,7 +2,6 @@ package sample.client.examples;
 
 import com.github.timeu.dygraphsgwt.client.Dygraphs;
 import com.github.timeu.dygraphsgwt.client.DygraphsOptions;
-import com.github.timeu.dygraphsgwt.client.DygraphsOptionsImpl;
 import com.google.gwt.core.client.JsArray;
 import com.google.gwt.core.client.JsArrayMixed;
 import com.google.gwt.user.client.ui.Composite;
@@ -41,10 +40,10 @@ public class HighlightRegionExample extends Composite {
             double val = data.get(i).getNumber(2);
             data.get(i).set(2,val+5.0);
         }
-        DygraphsOptions options = new DygraphsOptionsImpl();
-        options.setLabels(new String[]{"X", "Est.", "Actual"});
-        options.setAnimatedZooms(true);
-        options.setUnderlayCallback((canvas,area,g) -> {
+        DygraphsOptions options = new DygraphsOptions();
+        options.labels = new String[]{"X", "Est.", "Actual"};
+        options.animatedZooms = true;
+        options.underlayCallback = (canvas,area,g) -> {
             double[] bottom_left = g.toDomCoords((double) highlight_start, -20d,0);
             double[] top_right = g.toDomCoords((double) highlight_end, 20d,0);
 
@@ -53,7 +52,7 @@ public class HighlightRegionExample extends Composite {
 
             canvas.setFillStyle("rgba(255, 255, 102, 1.0)");
             canvas.fillRect(left, area.getY(), right - left, area.getH());
-        });
+        };
 
         panel.add(new Dygraphs(
                 data,

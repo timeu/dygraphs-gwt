@@ -3,18 +3,12 @@ package sample.client.examples;
 import com.github.timeu.dygraphsgwt.client.Dygraphs;
 import com.github.timeu.dygraphsgwt.client.DygraphsJs;
 import com.github.timeu.dygraphsgwt.client.DygraphsOptions;
-import com.github.timeu.dygraphsgwt.client.DygraphsOptionsImpl;
 import com.github.timeu.dygraphsgwt.client.callbacks.Area;
-import com.google.gwt.canvas.client.Canvas;
 import com.google.gwt.canvas.dom.client.Context2d;
 import com.google.gwt.core.client.JsDate;
-import com.google.gwt.i18n.client.DateTimeFormat;
-import com.google.gwt.i18n.client.TimeZone;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.HTML;
-
-import java.util.Date;
 
 
 /**
@@ -64,9 +58,9 @@ public class HighlightWeekendsExample extends Composite {
                 "2011-01-30," + Math.random()*100 + "\n" +
                 "2011-01-31," + Math.random()*100 + "\n";
 
-        DygraphsOptions options = new DygraphsOptionsImpl();
-        options.setLabels(new String[]{"Date", "Value"});
-        options.setUnderlayCallback((canvas, area, g) -> {
+        DygraphsOptions options = new DygraphsOptions();
+        options.labels = new String[]{"Date", "Value"};
+        options.underlayCallback = (canvas, area, g) -> {
             canvas.setFillStyle("rgba(255, 255, 102, 1.0)");
             double min_data_x = g.getValue(0, 0);
             double max_data_x = g.getValue(g.numRows() - 1, 0);
@@ -105,7 +99,7 @@ public class HighlightWeekendsExample extends Composite {
                 w += 7 * 24 * 3600 * 1000;
             }
 
-        });
+        };
         panel.add(new Dygraphs(data,options));
     }
 

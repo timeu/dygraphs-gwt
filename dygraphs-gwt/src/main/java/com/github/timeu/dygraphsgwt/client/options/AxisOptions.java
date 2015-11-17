@@ -1,12 +1,13 @@
 package com.github.timeu.dygraphsgwt.client.options;
 
-import com.google.gwt.core.client.js.JsNoExport;
-import com.google.gwt.core.client.js.JsType;
+
+import jsinterop.annotations.JsPackage;
+import jsinterop.annotations.JsType;
 
 /**
  * Created by uemit.seren on 8/3/15.
  */
-@JsType
+@JsType(isNative = true,namespace = JsPackage.GLOBAL,name="Object")
 public class AxisOptions {
 
     /**
@@ -73,6 +74,20 @@ public class AxisOptions {
     public ValueFormatter valueFormatter;
 
     /**
+     * Width (in pixels) of the containing divs for x- and y-axis labels.
+     * For the y-axis, this also controls the width of the y-axis.
+     * Note that for the x-axis, this is independent from pixelsPerLabel, which controls the spacing between labels.
+     * Default: 50 (y-axis), 60 (x-axis)
+     */
+    public int axisLabelWidth;
+
+    /**
+     * Size of the font (in pixels) to use in the axis labels, both x- and y-axis.
+     * Default: 14
+     */
+    public int axisLabelFontSize;
+
+    /**
      * This lets you specify an arbitrary function to generate tick marks on an axis.
      * The tick marks are an array of (value, label) pairs.
      * The built-in functions go to great lengths to choose good tick marks so, if you set this option, you'll most likely want to call one of them and modify the result.
@@ -122,6 +137,16 @@ public class AxisOptions {
 
         public AxisOptions build() {
             return options;
+        }
+
+        public Builder axisLabelWidth(int axislabelWith) {
+            this.options.axisLabelWidth = axislabelWith;
+            return this;
+        }
+
+        public Builder axisLabelFontSize(int axisLabelFontSize) {
+            this.options.axisLabelFontSize = axisLabelFontSize;
+            return this;
         }
     }
 }

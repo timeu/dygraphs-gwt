@@ -1,16 +1,12 @@
 package sample.client.examples;
 
 import com.github.timeu.dygraphsgwt.client.DygraphsOptions;
-import com.github.timeu.dygraphsgwt.client.DygraphsOptionsImpl;
 import com.github.timeu.dygraphsgwt.client.gviz.GVizChart;
-import com.google.gwt.core.client.JsArray;
-import com.google.gwt.core.client.JsArrayMixed;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.HorizontalPanel;
-import com.google.gwt.user.client.ui.IsWidget;
 import com.googlecode.gwt.charts.client.ChartLoader;
 import com.googlecode.gwt.charts.client.ColumnType;
 import com.googlecode.gwt.charts.client.DataTable;
@@ -52,8 +48,8 @@ public class GvizExample extends Composite {
         dataTable.addRow(new Date("2009/08/03"), 3, 8);
         GVizChart chart = new GVizChart();
         chart.setPixelSize(700, 240);
-        DygraphsOptions options = new DygraphsOptionsImpl();
-        options.setHideOverlayOnMouseOut(false);
+        DygraphsOptions options = new DygraphsOptions();
+        options.hideOverlayOnMouseOut = false;
         panel.add(chart);
         chart.draw(dataTable, options);
         HorizontalPanel buttonPanel = new HorizontalPanel();
@@ -117,9 +113,9 @@ public class GvizExample extends Composite {
 
         GVizChart chart = new GVizChart();
         chart.setPixelSize(700, 240);
-        DygraphsOptions options = new DygraphsOptionsImpl();
-        options.setDisplayAnnotations(true);
-        options.setLabelsKMB(true);
+        DygraphsOptions options = new DygraphsOptions();
+        options.displayAnnotations = true;
+        options.labelsKMB = true;
         panel.add(chart);
         chart.draw(dataTable,options);
     }

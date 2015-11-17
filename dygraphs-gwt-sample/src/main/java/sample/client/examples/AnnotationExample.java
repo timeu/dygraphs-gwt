@@ -2,20 +2,14 @@ package sample.client.examples;
 
 import com.github.timeu.dygraphsgwt.client.Dygraphs;
 import com.github.timeu.dygraphsgwt.client.DygraphsOptions;
-import com.github.timeu.dygraphsgwt.client.DygraphsOptionsImpl;
 import com.github.timeu.dygraphsgwt.client.callbacks.Annotation;
-import com.github.timeu.dygraphsgwt.client.callbacks.DataFunction;
-import com.google.gwt.core.client.GWT;
-import com.google.gwt.dom.client.DivElement;
 import com.google.gwt.dom.client.Style;
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.HTML;
-import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.HorizontalPanel;
-import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
 
 import java.util.ArrayList;
@@ -43,7 +37,9 @@ public class AnnotationExample extends Composite {
         Button addBtn = new Button("Add Annotation");
         addBtn.addClickHandler(event -> {
             int x = lastAnnotationX + 2;
-            Annotation annotation = new Annotation("line","200610"+x);
+            Annotation annotation = new Annotation();
+            annotation.series = "line";
+            annotation.x = "200610"+x;
             annotation.shortText = String.valueOf(x);
             annotation.text="Line "+x;
             annotation.tickHeight=10;
@@ -78,7 +74,9 @@ public class AnnotationExample extends Composite {
     }
 
     private static Annotation createAnnotation(int x) {
-        Annotation annotation = new Annotation("sine wave","200610" +x);
+        Annotation annotation = new Annotation();
+        annotation.series = "sine wave";
+        annotation.x = "200610" +x;
         annotation.shortText=String.valueOf(x);
         annotation.text="Stock Market Crash "+ x;
         return annotation;
@@ -93,21 +91,23 @@ public class AnnotationExample extends Composite {
             annotations.add(createAnnotation(x));
             lastAnnotationX = x;
         }
-        Annotation specialAnnot = new Annotation("another line", "20061013");
+        Annotation specialAnnot = new Annotation();
+        specialAnnot.series = "another line";
+        specialAnnot.x = "20061013";
         specialAnnot.icon ="http://dygraphs.com/gallery/images/dollar.png";
         specialAnnot.width=18D;
         specialAnnot.height=23D;
         specialAnnot.tickHeight=4;
-        specialAnnot.text="Anothjer one";
-        specialAnnot.setCssClas("annotation");
+        specialAnnot.text="Another one";
+        specialAnnot.cssClass = "annotation";
         specialAnnot.clickHandler =(annot, point, dygraph, event) -> events.add(new HTML("Special Handler"));
         annotations.add(specialAnnot);
-        DygraphsOptions options = new DygraphsOptionsImpl();
-        options.setRollPeriod(1);
-        options.setShowRoller(true);
-        options.setWidth(480);
-        options.setHeight(320);
-        options.setDrawCallback((g, initialDraw) -> {
+        DygraphsOptions options = new DygraphsOptions();
+        options.rollPeriod = 1;
+        options.showRoller = true;
+        options.width = 480;
+        options.height = 320;
+        options.drawCallback = (g, initialDraw) -> {
             Annotation[] anns = g.annotations();
             list.clear();
             for (Annotation annotation : anns) {
@@ -116,36 +116,36 @@ public class AnnotationExample extends Composite {
                 HTML listItem = new HTML("<div id='" + name + "'>" + name + ": " + shortText + " -> " + annotation.text + " </div>");
                 list.add(listItem);
             }
-        });
-        options.setAnnotationClickHandler((ann, point, dygraphjs, event) -> {
+        };
+        options.annotationClickHandler = (ann, point, dygraphjs, event) -> {
             events.add(new HTML("<div>click: " + getNameFromAnnotation(ann) + "</div>"));
-        });
+        };
 
-        options.setAnnotationDblClickHandler((ann, point, dygraphjs, event) -> {
+        options.annotationDblClickHandler = (ann, point, dygraphjs, event) -> {
             events.add(new HTML("<div>dblclick: " + getNameFromAnnotation(ann) + "</div>"));
-        });
-        options.setAnnotationMouseOverHandler((ann, point, dygraphjs, event) -> {
+        };
+        options.annotationMouseOverHandler = (ann, point, dygraphjs, event) -> {
             DOM.getElementById(getNameFromAnnotation(ann)).getStyle().setFontWeight(Style.FontWeight.BOLD);
             saveBg = ann.div.getStyle().getBackgroundColor();
             ann.div.getStyle().setBackgroundColor("#ddd");
-        });
-        options.setAnnotationMouseOutHandler((ann, point, dygraphjs, event) -> {
+        };
+        options.annotationMouseOutHandler = (ann, point, dygraphjs, event) -> {
             DOM.getElementById(getNameFromAnnotation(ann)).getStyle().setFontWeight(Style.FontWeight.NORMAL);
             ann.div.getStyle().setBackgroundColor(saveBg);
-            GWT.log("mouseout");
-        });
-        options.setPointClickCallback((event, point) -> {
+        };
+        options.pointClickCallback = (event, point) -> {
             if (point.getAnnotation()!=null) return;
 
             // If not, add one.
-            Annotation annotation = new Annotation(point.getName());
+            Annotation annotation = new Annotation();
+            annotation.series = point.getName();
             annotation.xval = point.getXval();
             annotation.shortText = String.valueOf(num);
             annotation.text = "Annotation #"+num;
             annotations.add(annotation);
             dygraphs.getJSO().setAnnotations(annotations.toArray(new Annotation[]{}));
             num++;
-        });
+        };
 
 
 

@@ -15,15 +15,9 @@
  */
 package sample.client;
 
-import com.github.timeu.dygraphsgwt.client.DygraphsOptionsImpl;
-import com.github.timeu.dygraphsgwt.client.Dygraphs;
-import com.github.timeu.dygraphsgwt.client.DygraphsOptions;
 import com.github.timeu.dygraphsgwt.client.ScriptInjector;
-import com.github.timeu.dygraphsgwt.client.callbacks.xValueParserCallback;
 import com.google.gwt.core.client.EntryPoint;
-import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
-import com.google.gwt.user.client.ui.RootPanel;
 
 /**
  * Initializes the application. Nothing to see here: everything interesting

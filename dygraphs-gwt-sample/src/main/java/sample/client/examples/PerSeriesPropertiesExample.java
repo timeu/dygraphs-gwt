@@ -2,12 +2,8 @@ package sample.client.examples;
 
 import com.github.timeu.dygraphsgwt.client.Dygraphs;
 import com.github.timeu.dygraphsgwt.client.DygraphsOptions;
-import com.github.timeu.dygraphsgwt.client.DygraphsOptionsImpl;
-import com.github.timeu.dygraphsgwt.client.callbacks.DataFunction;
 import com.github.timeu.dygraphsgwt.client.options.SeriesOptions;
 import com.google.gwt.user.client.ui.Composite;
-
-import java.util.function.Function;
 
 /**
  * Created by uemit.seren on 8/3/15.
@@ -18,8 +14,8 @@ public class PerSeriesPropertiesExample extends Composite {
 
     public PerSeriesPropertiesExample() {
 
-        DygraphsOptions options = new DygraphsOptionsImpl();
-        options.setStrokeWidth(2);
+        DygraphsOptions options = new DygraphsOptions();
+        options.strokeWidth = 2;
         SeriesOptions parabolaOptions = new SeriesOptions();
         parabolaOptions.drawPoints = true;
         parabolaOptions.strokeWidth = 0.0;

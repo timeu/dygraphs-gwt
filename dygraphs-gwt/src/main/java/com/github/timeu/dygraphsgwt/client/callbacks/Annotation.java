@@ -1,9 +1,11 @@
 package com.github.timeu.dygraphsgwt.client.callbacks;
 
-import com.google.gwt.core.client.js.JsProperty;
-import com.google.gwt.core.client.js.JsType;
 import com.google.gwt.dom.client.DivElement;
 import com.google.gwt.dom.client.Element;
+import jsinterop.annotations.JsConstructor;
+import jsinterop.annotations.JsIgnore;
+import jsinterop.annotations.JsPackage;
+import jsinterop.annotations.JsType;
 
 /**
  * Dygraphs lets you add annotations (markers) to individual points on your
@@ -13,7 +15,7 @@ import com.google.gwt.dom.client.Element;
  * Created by uemit.seren on 7/29/15.
  */
 
-@JsType
+@JsType(isNative = true,namespace = JsPackage.GLOBAL,name="Object")
 public class Annotation {
 
     /**
@@ -96,19 +98,8 @@ public class Annotation {
      */
     public Double xval;
 
-    public Annotation(String series) {
-        this.series = series;
-    }
-
-    public Annotation(String series, String x) {
-        this.series = series;
-        this.x = x;
-    }
-
     /**
      * CSS class to use for styling the annotation.
      */
-    public final native void setCssClas(String cssClass)/*-{
-        this.cssClass=cssClass;
-    }-*/;
+    public String cssClass;
 }

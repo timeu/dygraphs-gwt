@@ -5,7 +5,6 @@ import com.github.timeu.dygraphsgwt.client.extras.Synchronizer;
 import com.github.timeu.dygraphsgwt.client.extras.SynchronizerOptions;
 import com.github.timeu.dygraphsgwt.client.options.interactions.InteractionContext;
 import com.github.timeu.dygraphsgwt.client.options.interactions.InteractionModel;
-import com.google.gwt.core.client.GWT;
 import com.google.gwt.core.client.JsArray;
 import com.google.gwt.core.client.JsArrayMixed;
 import com.google.gwt.core.client.Scheduler;
@@ -14,9 +13,7 @@ import com.google.gwt.dom.client.NativeEvent;
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.ui.RequiresResize;
 import com.google.gwt.user.client.ui.Widget;
-import com.googlecode.gwt.charts.client.DataTable;
-
-import java.util.List;
+import com.googlecode.gwt.charts.client.DataSource;
 
 /**
  * Created by uemit.seren on 7/24/15.
@@ -52,7 +49,7 @@ public class Dygraphs extends Widget implements RequiresResize {
         jso.ready(() -> ready());
     }
 
-    public Dygraphs(DataTable dataTable,DygraphsOptions options) {
+    public Dygraphs(DataSource dataTable,DygraphsOptions options) {
         initElement();
         jso = ScriptInjector.createJso(getElement(),dataTable,options);
         jso.ready(() -> ready());
@@ -109,7 +106,6 @@ public class Dygraphs extends Widget implements RequiresResize {
     protected void onAttach() {
         super.onAttach();
         if (isReady) {
-            GWT.log("resize");
             resize();
         }
     }
@@ -167,6 +163,9 @@ public class Dygraphs extends Widget implements RequiresResize {
 
     public static void movePan(NativeEvent event, DygraphsJs g, InteractionContext context) {
         ScriptInjector.movePan(event, g, context);
+    }
+    public void redraw() {
+        jso.drawGraph_();
     }
 
 }

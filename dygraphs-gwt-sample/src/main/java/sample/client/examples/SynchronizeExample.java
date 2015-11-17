@@ -3,7 +3,6 @@ package sample.client.examples;
 import com.github.timeu.dygraphsgwt.client.Dygraphs;
 import com.github.timeu.dygraphsgwt.client.DygraphsJs;
 import com.github.timeu.dygraphsgwt.client.DygraphsOptions;
-import com.github.timeu.dygraphsgwt.client.DygraphsOptionsImpl;
 import com.github.timeu.dygraphsgwt.client.ScriptInjector;
 import com.github.timeu.dygraphsgwt.client.extras.Synchronizer;
 import com.github.timeu.dygraphsgwt.client.extras.SynchronizerOptions;
@@ -39,9 +38,9 @@ public class SynchronizeExample extends Composite {
         subPanel.add(secondPanel);
         panel.add(subPanel);
         Dygraphs g;
-        DygraphsOptions options = new DygraphsOptionsImpl();
-        options.setRollPeriod(7);
-        options.setErrorBars(true);
+        DygraphsOptions options = new DygraphsOptions();
+        options.rollPeriod = 7;
+        options.errorBars = true;
         for (int i = 0; i < 4; i++ ) {
             HorizontalPanel panelToAdd = firstPanel;
             if (i > 1)

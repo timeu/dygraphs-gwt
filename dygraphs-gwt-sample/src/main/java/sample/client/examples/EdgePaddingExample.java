@@ -2,7 +2,6 @@ package sample.client.examples;
 
 import com.github.timeu.dygraphsgwt.client.Dygraphs;
 import com.github.timeu.dygraphsgwt.client.DygraphsOptions;
-import com.github.timeu.dygraphsgwt.client.DygraphsOptionsImpl;
 import com.google.gwt.core.client.JsArray;
 import com.google.gwt.core.client.JsArrayMixed;
 import com.google.gwt.user.client.ui.CheckBox;
@@ -45,12 +44,12 @@ public class EdgePaddingExample extends Composite {
     }
 
     private void initDygraphs() {
-        DygraphsOptions options = new DygraphsOptionsImpl();
-        options.setLabels(new String[]{"x","A","B"});
-        options.setGridLineColor("#ccc");
-        options.setIncludeZero(true);
-        options.setWidth(250);
-        options.setHeight(130);
+        DygraphsOptions options = new DygraphsOptions();
+        options.labels = new String[]{"x","A","B"};
+        options.gridLineColor = "#ccc";
+        options.includeZero = true;
+        options.width = 250;
+        options.height = 130;
         for (int oy = -2; oy <= 2; ++oy) {
             HorizontalPanel chartPanel = new HorizontalPanel();
             panel.add(chartPanel);
@@ -74,25 +73,25 @@ public class EdgePaddingExample extends Composite {
     }
 
     private void changeMode(boolean rangePad) {
-        DygraphsOptions opts = new DygraphsOptionsImpl();
+        DygraphsOptions opts = new DygraphsOptions();
         if (rangePad) {
-            opts.setAvoidMinZero(false);
-            opts.setDrawAxesAtZero(true);
-            opts.setXRangePad(3);
-            opts.setYRangePad(10D);
+            opts.avoidMinZero = false;
+            opts.drawAxesAtZero = true;
+            opts.xRangePad = 3;
+            opts.yRangePad = 10D;
         }
         else {
-            opts.setAvoidMinZero(true);
-            opts.setDrawAxesAtZero(false);
-            opts.setXRangePad(0);
-            opts.setYRangePad(null);
+            opts.avoidMinZero = true;
+            opts.drawAxesAtZero = false;
+            opts.xRangePad = 0;
+            opts.yRangePad = null;
         }
         updateGraphOptions(opts);
     }
 
     private void changeSettings(boolean active) {
-        DygraphsOptions opts = new DygraphsOptionsImpl();
-        opts.setValueRange(active ? new double[]{-2,2} : null);
+        DygraphsOptions opts = new DygraphsOptions();
+        opts.valueRange = active ? new double[]{-2,2} : null;
         updateGraphOptions(opts);
     }
 

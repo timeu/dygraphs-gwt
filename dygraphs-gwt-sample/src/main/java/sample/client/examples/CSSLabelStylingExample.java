@@ -2,7 +2,6 @@ package sample.client.examples;
 
 import com.github.timeu.dygraphsgwt.client.Dygraphs;
 import com.github.timeu.dygraphsgwt.client.DygraphsOptions;
-import com.github.timeu.dygraphsgwt.client.DygraphsOptionsImpl;
 import com.github.timeu.dygraphsgwt.client.options.Properties;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.FlowPanel;
@@ -15,21 +14,21 @@ import sample.client.DataUtils;
 public class CSSLabelStylingExample extends Composite {
 
     FlowPanel panel = new FlowPanel();
-    DygraphsOptions options = new DygraphsOptionsImpl();
+    DygraphsOptions options = new DygraphsOptions();
 
     public CSSLabelStylingExample() {
         initWidget(panel);
-        options.setRollPeriod(7);
-        options.setLegend(DygraphsOptions.SHOW_LEGEND.always.name());
-        options.setTitle("High and Low Temperatures");
-        options.setTitleHeight(32);
-        options.setYlabel("Temperature (F)");
-        options.setXlabel("Date (Ticks indicate the start of the indicated time period)");
+        options.rollPeriod = 7;
+        options.legend = DygraphsOptions.SHOW_LEGEND.always.name();
+        options.title = "High and Low Temperatures";
+        options.titleHeight = 32;
+        options.ylabel = "Temperature (F)";
+        options.xlabel = "Date (Ticks indicate the start of the indicated time period)";
         Properties styles = Properties.create();
         styles.set("text-align","right");
         styles.set("background","none");
-        options.setLabelsDivStyles(styles);
-        options.setStrokeWidth(1.5);
+        options.labelsDivStyles = styles;
+        options.strokeWidth = 1.5;
         panel.add(new HTML("<p class=\"infotext\">This chart's labels are styled</p>"));
         initDygraphs1();
         panel.add(new HTML("<p class=\"infotext\">This version of the chart uses the default styles:</p>"));

@@ -1,7 +1,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   
-  <groupId>com.github.timeu.dygraphs-gwt</groupId>
+  <groupId>com.github.timeu.gwt-libs.dygraphs-gwt</groupId>
   <artifactId>dygraphs-gwt-parent</artifactId>
   <version>1.0.0-SNAPSHOT</version>
   <packaging>pom</packaging>
@@ -62,12 +62,12 @@
               <scope>import</scope>
           </dependency>
          <dependency>
-              <groupId>com.github.timeu.dygraphs-gwt</groupId>
+              <groupId>com.github.timeu.gwt-libs.dygraphs-gwt</groupId>
               <artifactId>dygraphs-gwt</artifactId>
               <version>${project.version}</version>
           </dependency>
          <dependency>
-              <groupId>com.github.timeu.dygraphs-gwt</groupId>
+              <groupId>com.github.timeu.gwt-libs.dygraphs-gwt</groupId>
               <artifactId>dygraphs-gwt</artifactId>
               <version>${project.version}</version>
               <type>gwt-lib</type>
@@ -115,25 +115,27 @@
           <plugin>
           <groupId>net.ltgt.gwt.maven</groupId>
           <artifactId>gwt-maven-plugin</artifactId>
-          <version>1.0-rc-2</version>
+          <version>1.0-rc-4</version>
           <extensions>true</extensions>
           <configuration>
-              <draftCompile>true</draftCompile>
               <startupUrls>
                   <startupUrl>dygraphsgwtsample/index.html</startupUrl>
               </startupUrls>
               <compilerArgs>
-                  <compilerArg>-XjsInteropMode</compilerArg>
-                  <compilerArg>JS</compilerArg>
+                  <arg>-XjsInteropMode</arg>
+                  <arg>JS_RC</arg>
+                  <!--<arg>-generateJsInteropExports</arg>-->
               </compilerArgs>
               <devmodeArgs>
                   <arg>-XjsInteropMode</arg>
-                  <arg>JS</arg>
+                  <arg>JS_RC</arg>
+                  <!--<arg>-generateJsInteropExports</arg>-->
                   <devmodeArg>-incremental</devmodeArg>
               </devmodeArgs>
               <codeserverArgs>
                   <arg>-XjsInteropMode</arg>
-                  <arg>JS</arg>
+                  <arg>JS_RC</arg>
+                  <!--<arg>-generateJsInteropExports</arg>-->
                   <arg>-incremental</arg>
               </codeserverArgs>
               <launcherDir>${project.build.directory}/gwt/launcherDir</launcherDir>

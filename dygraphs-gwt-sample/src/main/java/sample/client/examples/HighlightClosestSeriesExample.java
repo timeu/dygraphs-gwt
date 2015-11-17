@@ -2,19 +2,12 @@ package sample.client.examples;
 
 import com.github.timeu.dygraphsgwt.client.Dygraphs;
 import com.github.timeu.dygraphsgwt.client.DygraphsOptions;
-import com.github.timeu.dygraphsgwt.client.DygraphsOptionsImpl;
 import com.github.timeu.dygraphsgwt.client.callbacks.ClickCallback;
 import com.github.timeu.dygraphsgwt.client.options.HighlightSeriesOptions;
-import com.google.gwt.core.client.GWT;
 import com.google.gwt.core.client.JsArray;
 import com.google.gwt.core.client.JsArrayMixed;
-import com.google.gwt.core.client.JsArrayUtils;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.HorizontalPanel;
-import sample.client.SampleShell;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by uemit.seren on 7/30/15.
@@ -69,18 +62,18 @@ public class HighlightClosestSeriesExample extends Composite {
             labels[i + 1] = label;
         }
 
-        DygraphsOptions options = new DygraphsOptionsImpl();
+        DygraphsOptions options = new DygraphsOptions();
         HighlightSeriesOptions highlightOptions = new HighlightSeriesOptions();
         highlightOptions.highlightCircleSize =5;
         highlightOptions.strokeBorderWidth=1;
         highlightOptions.strokeWidth = 3;
-        options.setWidth(400);
-        options.setHeight(320);
-        options.setLabels(labels);
-        options.setStackedGraph(isStacked);
-        options.setHighlightCircleSize(2);
-        options.setStrokeWidth(1);
-        options.setHighlightSeriesOpts(highlightOptions);
+        options.width = 400;
+        options.height = 320;
+        options.labels = labels;
+        options.stackedGraph = isStacked;
+        options.highlightCircleSize  = 2;
+        options.strokeWidth = 1;
+        options.highlightSeriesOpts = highlightOptions;
 
         Dygraphs g = new Dygraphs(getData(numSeries,numRows,isStacked),options);
 
@@ -91,8 +84,8 @@ public class HighlightClosestSeriesExample extends Composite {
                 g.getJSO().setSelection(g.getJSO().getSelection(), g.getJSO().getHighlightSeries(), true);
             }
         };
-        DygraphsOptions newOptions = new DygraphsOptionsImpl();
-        newOptions.setClickCallback(clickCallback);
+        DygraphsOptions newOptions = new DygraphsOptions();
+        newOptions.clickCallback = clickCallback;
         g.getJSO().updateOptions(newOptions, false);
         g.getElement().addClassName(cssName);
 

@@ -1,7 +1,8 @@
 package com.github.timeu.dygraphsgwt.client.options;
 
 import com.github.timeu.dygraphsgwt.client.DygraphsJs;
-import com.google.gwt.core.client.js.JsFunction;
+import jsinterop.annotations.JsFunction;
+
 
 /**
  * Created by uemit.seren on 8/6/15.

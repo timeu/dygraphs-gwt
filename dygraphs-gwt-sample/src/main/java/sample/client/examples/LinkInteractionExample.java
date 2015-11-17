@@ -1,22 +1,16 @@
 package sample.client.examples;
 
 import com.github.timeu.dygraphsgwt.client.Dygraphs;
-import com.github.timeu.dygraphsgwt.client.DygraphsJs;
 import com.github.timeu.dygraphsgwt.client.DygraphsOptions;
-import com.github.timeu.dygraphsgwt.client.DygraphsOptionsImpl;
 import com.google.gwt.animation.client.AnimationScheduler;
 import com.google.gwt.core.client.JsArray;
 import com.google.gwt.core.client.JsArrayMixed;
 import com.google.gwt.core.client.JsDate;
-import com.google.gwt.core.client.Scheduler;
 import com.google.gwt.user.client.ui.Anchor;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.HTML;
-import com.google.gwt.user.client.ui.HTMLPanel;
 import com.google.gwt.user.client.ui.HorizontalPanel;
-import com.google.gwt.user.client.ui.InlineHyperlink;
-import com.google.gwt.user.client.ui.VerticalPanel;
 
 import java.util.Date;
 
@@ -78,12 +72,12 @@ public class LinkInteractionExample extends Composite {
         }
         origRange[0] = r.get(0).getNumber(0);
         origRange[1] = r.get(r.length()-1).getNumber(0);
-        DygraphsOptions options = new DygraphsOptionsImpl();
-        options.setRollPeriod(7);;
-        options.setAnimatedZooms(true);
-        options.setWidth(600);
-        options.setHeight(300);
-        options.setLabels(new String[]{"Date", "a", "b"});
+        DygraphsOptions options = new DygraphsOptions();
+        options.rollPeriod = 7;
+        options.animatedZooms = true;
+        options.width = 600;
+        options.height = 300;
+        options.labels = new String[]{"Date", "a", "b"};
         dygraphs = new Dygraphs(r,options);
         panel.add(dygraphs);
     }
@@ -99,16 +93,16 @@ public class LinkInteractionExample extends Composite {
         double[] range = dygraphs.getJSO().xAxisRange();
         if (Math.abs(desiredRange[0] - range[0]) < 60 &&
                 Math.abs(desiredRange[1] - range[1]) < 60) {
-            DygraphsOptions options = new DygraphsOptionsImpl();
-            options.setDateWindow(desiredRange);
+            DygraphsOptions options = new DygraphsOptions();
+            options.dateWindow = desiredRange;
             dygraphs.getJSO().updateOptions(options,false);
             // (do not set another timeout.)
         } else {
             double[] newRange = new double[2];
             newRange[0] = 0.5 * (desiredRange[0] + range[0]);
             newRange[1] = 0.5 * (desiredRange[1] + range[1]);
-            DygraphsOptions options = new DygraphsOptionsImpl();
-            options.setDateWindow(newRange);
+            DygraphsOptions options = new DygraphsOptions();
+            options.dateWindow = newRange;
             dygraphs.getJSO().updateOptions(options,false);
             animate();
         }

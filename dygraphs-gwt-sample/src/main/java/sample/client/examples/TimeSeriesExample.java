@@ -3,7 +3,6 @@ package sample.client.examples;
 import com.github.timeu.dygraphsgwt.client.Dygraphs;
 import com.github.timeu.dygraphsgwt.client.DygraphsJs;
 import com.github.timeu.dygraphsgwt.client.DygraphsOptions;
-import com.github.timeu.dygraphsgwt.client.DygraphsOptionsImpl;
 import com.github.timeu.dygraphsgwt.client.Position;
 import com.github.timeu.dygraphsgwt.client.options.AxesOptions;
 import com.github.timeu.dygraphsgwt.client.options.AxisOptions;
@@ -23,9 +22,7 @@ import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.web.bindery.event.shared.HandlerRegistration;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 /**
  * Created by uemit.seren on 7/30/15.
@@ -76,14 +73,14 @@ public class TimeSeriesExample extends Composite {
             data.push(row);
         }
 
-        DygraphsOptions options = new DygraphsOptionsImpl();
-        options.setValueRange(valueRange);
-        options.setLabels(new String[]{"Date", "Value"});
-        options.setStrokeWidth(1.5);
-        options.setGridLineColor("rgb(196, 196, 196)");
-        options.setAxes(new AxesOptions.Builder().y(new AxisOptions.Builder()
-            .drawGrid(false).drawAxis(false).build()).build());
-        options.setInteractionModel(getInterationModel());
+        DygraphsOptions options = new DygraphsOptions();
+        options.valueRange = valueRange;
+        options.labels = new String[]{"Date", "Value"};
+        options.strokeWidth = 1.5;
+        options.gridLineColor = "rgb(196, 196, 196)";
+        options.axes = new AxesOptions.Builder().y(new AxisOptions.Builder()
+            .drawGrid(false).drawAxis(false).build()).build();
+        options.interactionModel = getInterationModel();
         dygraphs = new Dygraphs(data,options);
         panel.add(dygraphs);
     }
@@ -135,8 +132,8 @@ public class TimeSeriesExample extends Composite {
             double increment = delta * percentage;
             double[] foo = new double[]{increment * xPct, increment * (1 - xPct)};
             double[] dateWindow = new double[]{axis[0] + foo[0], axis[1] - foo[1] };
-            DygraphsOptions options = new DygraphsOptionsImpl();
-            options.setDateWindow(dateWindow);
+            DygraphsOptions options = new DygraphsOptions();
+            options.dateWindow = dateWindow;
             g.updateOptions(options,false);
             Dygraphs.cancelEvent(event);
         };
@@ -218,7 +215,7 @@ public class TimeSeriesExample extends Composite {
             }
             lastDrawRow = closest_row;
             lastDrawValue = value;
-            DygraphsOptions options = new DygraphsOptionsImpl();
+            DygraphsOptions options = new DygraphsOptions();
             options.setArrayFile(data);
             g.updateOptions(options,false);
             g.setSelection(closest_row,null,false);  // prevents the dot from being finnicky.

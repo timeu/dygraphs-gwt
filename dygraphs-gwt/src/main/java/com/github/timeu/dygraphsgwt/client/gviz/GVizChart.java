@@ -4,7 +4,6 @@ package com.github.timeu.dygraphsgwt.client.gviz;
 import com.github.timeu.dygraphsgwt.client.DygraphsJs;
 import com.github.timeu.dygraphsgwt.client.DygraphsOptions;
 import com.github.timeu.dygraphsgwt.client.ScriptInjector;
-import com.google.gwt.core.client.JsArray;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.user.client.DOM;
 import com.google.gwt.user.client.ui.Widget;
@@ -77,7 +76,7 @@ public class GVizChart extends Widget  {
         return createNativeGVizJso(getElement());
     }
 
-    protected final native GVizChartJs createNativeGVizJso(Element container) /*-{
-        return new $wnd.Dygraph.GVizChart(container);
-    }-*/;
+    protected final GVizChartJs createNativeGVizJso(Element container) {
+        return new GVizChartJs(container);
+    }
 }

@@ -2,7 +2,6 @@ package sample.client.examples;
 
 import com.github.timeu.dygraphsgwt.client.Dygraphs;
 import com.github.timeu.dygraphsgwt.client.DygraphsOptions;
-import com.github.timeu.dygraphsgwt.client.DygraphsOptionsImpl;
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.core.client.JsArray;
 import com.google.gwt.core.client.JsArrayMixed;
@@ -166,10 +165,10 @@ public class IndependantSeriesExample extends Composite {
         data.set(5, row);
 
 
-        DygraphsOptions options = new DygraphsOptionsImpl();
-        options.setLabels(new String[]{"x", "A", "B"});
-        options.setConnectSeparatedPoints(true);
-        options.setDrawPoints(true);
+        DygraphsOptions options = new DygraphsOptions();
+        options.labels = new String[]{"x", "A", "B"};
+        options.connectSeparatedPoints = true;
+        options.drawPoints = true;
         Dygraphs g = new Dygraphs(data,options);
         g.getElement().getStyle().setFloat(Style.Float.RIGHT);
         g.getElement().getStyle().setMarginRight(50, Style.Unit.PX);
@@ -181,9 +180,9 @@ public class IndependantSeriesExample extends Composite {
 
 
     private void initDygraphs2() {
-        DygraphsOptions options = new DygraphsOptionsImpl();
-        options.setDrawPoints(true);
-        options.setConnectSeparatedPoints(true);
+        DygraphsOptions options = new DygraphsOptions();
+        options.drawPoints = true;
+        options.connectSeparatedPoints = true;
         Dygraphs g = new Dygraphs("x,A,B\n" +
                         "1,,3\n" +
                         "2,2,\n" +

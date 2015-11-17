@@ -6,15 +6,12 @@ import com.github.timeu.dygraphsgwt.client.extras.Synchronizer;
 import com.github.timeu.dygraphsgwt.client.extras.SynchronizerOptions;
 import com.github.timeu.dygraphsgwt.client.options.interactions.InteractionContext;
 import com.github.timeu.dygraphsgwt.client.options.interactions.InteractionModel;
-import com.google.gwt.core.client.GWT;
 import com.google.gwt.core.client.JsArray;
 import com.google.gwt.core.client.JsArrayMixed;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.dom.client.NativeEvent;
 import com.google.gwt.resources.client.TextResource;
-import com.googlecode.gwt.charts.client.DataTable;
-
-import java.util.List;
+import com.googlecode.gwt.charts.client.DataSource;
 
 /**
  * Created by uemit.seren on 7/27/15.
@@ -23,7 +20,7 @@ public class ScriptInjector {
 
 
 
-    public enum EXTRAS {SYNCHRONIZE}
+    public enum EXTRAS {SYNCHRONIZE,SHAPES,CROSSHAIR}
 
     public static void injectScript() {
         injectScript(false);
@@ -41,9 +38,7 @@ public class ScriptInjector {
 
     public static void injectExtra(EXTRAS extra) {
         if (!isExtrasInjected(extra.name().toLowerCase())) {
-            String extraJsCode = getExtraJsCode(extra).getText();
-            GWT.log("not injected");
-            com.google.gwt.core.client.ScriptInjector.fromString(extraJsCode).setWindow(com.google.gwt.core.client.ScriptInjector.TOP_WINDOW).inject();
+            com.google.gwt.core.client.ScriptInjector.fromString(getExtraJsCode(extra).getText()).setWindow(com.google.gwt.core.client.ScriptInjector.TOP_WINDOW).inject();
         }
     }
 
@@ -51,6 +46,10 @@ public class ScriptInjector {
         switch (extra) {
             case SYNCHRONIZE:
                 return DygraphsClientBundle.INSTANCE.synchronizer();
+            case SHAPES:
+                return DygraphsClientBundle.INSTANCE.shapes();
+            case CROSSHAIR:
+                return DygraphsClientBundle.INSTANCE.crosshair();
             default:
                 throw new RuntimeException("Extra "+ extra + " not available");
         }
@@ -84,7 +83,7 @@ public class ScriptInjector {
         return createNativeJsoWithFunction(container, function, options);
     }
 
-    protected static DygraphsJs createJso(Element container, DataTable data, DygraphsOptions options) {
+    protected static DygraphsJs createJso(Element container, DataSource data, DygraphsOptions options) {
         injectScript();
         return createNativeJsoWithDataTable(container, data, options);
     }
@@ -106,7 +105,7 @@ public class ScriptInjector {
         return new $wnd.Dygraph(container, func, options);
     }-*/;
 
-    protected static final native DygraphsJs createNativeJsoWithDataTable(Element container, DataTable data, DygraphsOptions options) /*-{
+    protected static final native DygraphsJs createNativeJsoWithDataTable(Element container, DataSource data, DygraphsOptions options) /*-{
         return new $wnd.Dygraph(container, data, options);
     }-*/;
 

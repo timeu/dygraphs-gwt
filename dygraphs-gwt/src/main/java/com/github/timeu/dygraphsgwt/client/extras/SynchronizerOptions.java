@@ -1,14 +1,15 @@
 package com.github.timeu.dygraphsgwt.client.extras;
 
-import com.google.gwt.core.client.js.JsProperty;
-import com.google.gwt.core.client.js.JsType;
+
+import jsinterop.annotations.JsPackage;
+import jsinterop.annotations.JsType;
 
 /**
  * Allows the user to set the options for the Synchronizer Plugin
  *
  * Created by uemit.seren on 8/3/15.
  */
-@JsType
+@JsType(isNative = true,namespace = JsPackage.GLOBAL,name="Object")
 public class SynchronizerOptions{
 
     /**

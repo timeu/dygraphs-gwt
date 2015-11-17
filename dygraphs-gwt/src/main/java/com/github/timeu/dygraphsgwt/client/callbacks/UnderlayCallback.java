@@ -3,7 +3,8 @@ package com.github.timeu.dygraphsgwt.client.callbacks;
 import com.github.timeu.dygraphsgwt.client.DygraphsJs;
 import com.google.gwt.canvas.client.Canvas;
 import com.google.gwt.canvas.dom.client.Context2d;
-import com.google.gwt.core.client.js.JsFunction;
+import jsinterop.annotations.JsFunction;
+
 
 /**
  * Created by uemit.seren on 7/31/15.

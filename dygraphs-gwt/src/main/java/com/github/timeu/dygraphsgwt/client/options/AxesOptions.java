@@ -1,11 +1,13 @@
 package com.github.timeu.dygraphsgwt.client.options;
 
-import com.google.gwt.core.client.js.JsType;
+
+import jsinterop.annotations.JsPackage;
+import jsinterop.annotations.JsType;
 
 /**
  * Created by uemit.seren on 8/3/15.
  */
-@JsType
+@JsType(isNative = true,namespace = JsPackage.GLOBAL,name="Object")
 public class AxesOptions {
 
     /**
@@ -22,7 +24,6 @@ public class AxesOptions {
      * y2-Axis options
      */
     public AxisOptions y2;
-
 
     public static class Builder {
 

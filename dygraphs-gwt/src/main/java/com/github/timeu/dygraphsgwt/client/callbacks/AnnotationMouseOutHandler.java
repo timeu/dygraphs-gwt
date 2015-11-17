@@ -1,8 +1,8 @@
 package com.github.timeu.dygraphsgwt.client.callbacks;
 
 import com.github.timeu.dygraphsgwt.client.DygraphsJs;
-import com.google.gwt.core.client.js.JsFunction;
 import com.google.gwt.event.dom.client.MouseEvent;
+import jsinterop.annotations.JsFunction;
 
 /**
  * Created by uemit.seren on 7/29/15.

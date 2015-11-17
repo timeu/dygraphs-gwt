@@ -3,20 +3,19 @@ package sample.client.examples;
 import com.github.timeu.dygraphsgwt.client.Dygraphs;
 import com.github.timeu.dygraphsgwt.client.DygraphsJs;
 import com.github.timeu.dygraphsgwt.client.DygraphsOptions;
-import com.github.timeu.dygraphsgwt.client.DygraphsOptionsImpl;
 import com.github.timeu.dygraphsgwt.client.callbacks.Area;
 import com.google.gwt.canvas.dom.client.Context2d;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.core.client.JsArray;
 import com.google.gwt.core.client.JsArrayMixed;
-import com.google.gwt.core.client.js.JsProperty;
-import com.google.gwt.core.client.js.JsType;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.HasHorizontalAlignment;
 import com.google.gwt.user.client.ui.HorizontalPanel;
+import jsinterop.annotations.JsProperty;
+import jsinterop.annotations.JsType;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -64,7 +63,7 @@ public class LinearRegressionExample  extends Composite {
     }
 
     private void initDygraphs() {
-        DygraphsOptions options = new DygraphsOptionsImpl();
+        DygraphsOptions options = new DygraphsOptions();
         JsArray<JsArrayMixed> data = JsArray.createArray().cast();
         for (int i = 0; i < 120; i++) {
             JsArrayMixed row = JsArrayMixed.createArray().cast();
@@ -73,11 +72,11 @@ public class LinearRegressionExample  extends Composite {
             row.push(30.0 - i / 5.0 - 10.0 * Math.sin(i / 3.0 + 1.0));
             data.push(row);
         }
-        options.setLabels(new String[]{"X","Y1","Y2"});
-        options.setDrawPoints(true);
-        options.setDrawAxesAtZero(true);
-        options.setStrokeWidth(0.0);
-        options.setUnderlayCallback((ctx,area,g)->drawLines(ctx,area));
+        options.labels = new String[]{"X","Y1","Y2"};
+        options.drawPoints = true;
+        options.drawAxesAtZero = true;
+        options.strokeWidth = 0.0;
+        options.underlayCallback = (ctx,area,g)->drawLines(ctx,area);
         dygraphs = new Dygraphs(data,options);
         panel.add(dygraphs);
 
@@ -87,7 +86,7 @@ public class LinearRegressionExample  extends Composite {
         for (int i=0;i< coeffs.size();i++){
             coeffs.set(i,null);
         }
-        dygraphs.getJSO().updateOptions(new DygraphsOptionsImpl(),false);
+        dygraphs.getJSO().updateOptions(new DygraphsOptions(),false);
     }
 
     private void drawLines(Context2d ctx,Area area) {
@@ -150,7 +149,6 @@ public class LinearRegressionExample  extends Composite {
         double b = (sum_y - a * sum_x) / num;
 
         coeffs.set(series,new Double[]{b, a});
-        GWT.log("coeffs(" + series + "): [" + b + ", " + a + "]");
-        dygraphs.getJSO().updateOptions(new DygraphsOptionsImpl(),false);  // forces a redraw.
+        dygraphs.getJSO().updateOptions(new DygraphsOptions(),false);  // forces a redraw.
     }
 }

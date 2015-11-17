@@ -1,9 +1,8 @@
 package com.github.timeu.dygraphsgwt.client.options.interactions;
 
 import com.github.timeu.dygraphsgwt.client.DygraphsJs;
-import com.google.gwt.core.client.js.JsFunction;
 import com.google.gwt.dom.client.NativeEvent;
-import com.google.gwt.event.dom.client.MouseWheelEvent;
+import jsinterop.annotations.JsFunction;
 
 
 /**

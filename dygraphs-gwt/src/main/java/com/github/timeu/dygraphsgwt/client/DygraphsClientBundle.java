@@ -17,8 +17,14 @@ public interface DygraphsClientBundle extends ClientBundle {
     @Source("resources/dygraph-combined-dev.js")
     TextResource dygraphjs_dev();
 
+    @Source("resources/extras/shapes.js")
+    TextResource shapes();
 
     @Source("resources/extras/synchronizer.js")
     TextResource synchronizer();
+
+    @Source("resources/extras/crosshair.js")
+    TextResource crosshair();
+
 
 }

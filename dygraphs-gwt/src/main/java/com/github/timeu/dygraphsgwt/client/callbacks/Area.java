@@ -1,18 +1,21 @@
 package com.github.timeu.dygraphsgwt.client.callbacks;
 
-import com.google.gwt.core.client.js.JsProperty;
-import com.google.gwt.core.client.js.JsType;
+
+import jsinterop.annotations.JsPackage;
+import jsinterop.annotations.JsProperty;
+import jsinterop.annotations.JsType;
 
 /**
  * Created by uemit.seren on 7/31/15.
  */
-@JsType
+@JsType(isNative = true,namespace = JsPackage.GLOBAL,name="Object")
 public interface Area {
 
     /**
      * Returns the x coordinates of the area
      */
-    @JsProperty double getX();
+    @JsProperty
+    double getX();
 
     /**
      * Returns the y coordinates of the area

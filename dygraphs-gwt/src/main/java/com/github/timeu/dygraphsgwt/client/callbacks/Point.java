@@ -1,20 +1,23 @@
 package com.github.timeu.dygraphsgwt.client.callbacks;
 
-import com.google.gwt.core.client.js.JsProperty;
-import com.google.gwt.core.client.js.JsType;
+
+import jsinterop.annotations.JsPackage;
+import jsinterop.annotations.JsProperty;
+import jsinterop.annotations.JsType;
 
 /**
  * Some callbacks take a point argument.
  *
  * Created by uemit.seren on 7/29/15.
  */
-@JsType
+@JsType(isNative = true,namespace = JsPackage.GLOBAL,name="Object")
 public interface Point {
 
     /**
      * The {@link Annotation} if there is one
      */
-    @JsProperty Annotation getAnnotation();
+    @JsProperty
+    Annotation getAnnotation();
 
     /**
      * The canvas coordinates at which the point is drawn.

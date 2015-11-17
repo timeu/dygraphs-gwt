@@ -3,14 +3,10 @@ package sample.client.examples;
 import com.github.timeu.dygraphsgwt.client.Dygraphs;
 import com.github.timeu.dygraphsgwt.client.DygraphsJs;
 import com.github.timeu.dygraphsgwt.client.DygraphsOptions;
-import com.github.timeu.dygraphsgwt.client.DygraphsOptionsImpl;
 import com.github.timeu.dygraphsgwt.client.Position;
 import com.github.timeu.dygraphsgwt.client.ScriptInjector;
 import com.github.timeu.dygraphsgwt.client.options.interactions.InteractionModel;
-import com.github.timeu.dygraphsgwt.client.options.interactions.MouseWheelHandler;
 import com.google.gwt.canvas.dom.client.Context2d;
-import com.google.gwt.core.client.GWT;
-import com.google.gwt.dom.client.Document;
 import com.google.gwt.dom.client.NativeEvent;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.MouseWheelEvent;
@@ -19,7 +15,6 @@ import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
-import com.google.gwt.user.client.ui.ScrollPanel;
 import sample.client.DataUtils;
 
 import java.util.ArrayList;
@@ -110,10 +105,10 @@ public class CustomInteractioModelsExample extends Composite {
             }
         };
         model.dblclick =(event,g,context)-> restorePosition(g);
-        options.setUnderlayCallback((canvas,area,g)->{
+        options.underlayCallback = (canvas,area,g)->{
             funCanvas = canvas;
-        });
-        options.setInteractionModel(model);
+        };
+        options.interactionModel = model;
         Dygraphs dygraphjs =new Dygraphs(DataUtils.noisyData(),options);
         dygraphjs.setPixelSize(600, 300);
         panel.add(dygraphjs);
@@ -199,7 +194,7 @@ public class CustomInteractioModelsExample extends Composite {
             Dygraphs.cancelEvent(event);
         };
 
-        options.setInteractionModel(model);
+        options.interactionModel = model;
 
         Dygraphs g = new Dygraphs(DataUtils.noisyData(),options);
         g.setPixelSize(600, 300);
@@ -215,7 +210,7 @@ public class CustomInteractioModelsExample extends Composite {
 
 
         DygraphsOptions options = createOptions();
-        options.setInteractionModel(new InteractionModel());
+        options.interactionModel = new InteractionModel();
         Dygraphs g = new Dygraphs(DataUtils.noisyData(),options);
         g.setPixelSize(600, 300);
         panel.add(g);
@@ -232,15 +227,15 @@ public class CustomInteractioModelsExample extends Composite {
     }
 
     private DygraphsOptions createOptions() {
-        DygraphsOptions options = new DygraphsOptionsImpl();
-        options.setErrorBars(true);
+        DygraphsOptions options = new DygraphsOptions();
+        options.errorBars = true;
         return options;
     }
 
     private void restorePosition(DygraphsJs g) {
-        DygraphsOptions options = new DygraphsOptionsImpl();
-        options.setDateWindow(null);
-        options.setValueRange(null);
+        DygraphsOptions options = new DygraphsOptions();
+        options.dateWindow = null;
+        options.valueRange = null;
         g.updateOptions(options, false);
     }
 
@@ -296,9 +291,9 @@ public class CustomInteractioModelsExample extends Composite {
         for (int i = 0; i < yAxes.length; i++) {
             newYAxes[i] = adjustAxis(yAxes[i], zoomInPercentage, yBias);
         }
-        DygraphsOptions options = new DygraphsOptionsImpl();
-        options.setDateWindow(adjustAxis(g.xAxisRange(),zoomInPercentage,xBias));
-        options.setValueRange(newYAxes[0]);
+        DygraphsOptions options = new DygraphsOptions();
+        options.dateWindow = adjustAxis(g.xAxisRange(),zoomInPercentage,xBias);
+        options.valueRange = newYAxes[0];
         g.updateOptions(options,false);
     }
     private double[] adjustAxis(double[] axis, double zoomInPercentage, double bias) {

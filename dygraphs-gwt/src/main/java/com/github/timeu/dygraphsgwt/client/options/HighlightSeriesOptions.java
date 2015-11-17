@@ -1,11 +1,13 @@
 package com.github.timeu.dygraphsgwt.client.options;
 
-import com.google.gwt.core.client.js.JsType;
+
+import jsinterop.annotations.JsPackage;
+import jsinterop.annotations.JsType;
 
 /**
  * Created by uemit.seren on 7/30/15.
  */
-@JsType
+@JsType(isNative = true,namespace = JsPackage.GLOBAL,name="Object")
 public class HighlightSeriesOptions {
 
     /**

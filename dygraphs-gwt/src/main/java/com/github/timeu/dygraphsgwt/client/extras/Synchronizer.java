@@ -1,6 +1,7 @@
 package com.github.timeu.dygraphsgwt.client.extras;
 
-import com.google.gwt.core.client.js.JsType;
+
+import jsinterop.annotations.JsType;
 
 /**
  * Created by uemit.seren on 8/3/15.
