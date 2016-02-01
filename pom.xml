@@ -122,20 +122,14 @@
                   <startupUrl>dygraphsgwtsample/index.html</startupUrl>
               </startupUrls>
               <compilerArgs>
-                  <arg>-XjsInteropMode</arg>
-                  <arg>JS_RC</arg>
-                  <!--<arg>-generateJsInteropExports</arg>-->
+                  <arg>-generateJsInteropExports</arg>
               </compilerArgs>
               <devmodeArgs>
-                  <arg>-XjsInteropMode</arg>
-                  <arg>JS_RC</arg>
-                  <!--<arg>-generateJsInteropExports</arg>-->
+                  <devmodeArg>-generateJsInteropExports</devmodeArg>
                   <devmodeArg>-incremental</devmodeArg>
               </devmodeArgs>
               <codeserverArgs>
-                  <arg>-XjsInteropMode</arg>
-                  <arg>JS_RC</arg>
-                  <!--<arg>-generateJsInteropExports</arg>-->
+                  <arg>-generateJsInteropExports</arg>
                   <arg>-incremental</arg>
               </codeserverArgs>
               <launcherDir>${project.build.directory}/gwt/launcherDir</launcherDir>
