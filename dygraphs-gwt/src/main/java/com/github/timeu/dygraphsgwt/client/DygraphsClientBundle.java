@@ -11,10 +11,10 @@ public interface DygraphsClientBundle extends ClientBundle {
 
     DygraphsClientBundle INSTANCE = GWT.create(DygraphsClientBundle.class);
 
-    @Source("resources/dygraph-combined.js")
+    @Source("resources/dygraph.min.js")
     TextResource dygraphjs();
 
-    @Source("resources/dygraph-combined-dev.js")
+    @Source("resources/dygraph.js")
     TextResource dygraphjs_dev();
 
     @Source("resources/extras/shapes.js")

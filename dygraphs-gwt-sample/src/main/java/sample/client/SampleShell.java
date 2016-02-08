@@ -43,6 +43,7 @@ import sample.client.examples.HighlightClosestSeriesExample;
 import sample.client.examples.HighlightRegionExample;
 import sample.client.examples.HighlightWeekendsExample;
 import sample.client.examples.IndependantSeriesExample;
+import sample.client.examples.LegendFormatterExample;
 import sample.client.examples.LinearRegressionExample;
 import sample.client.examples.LinkInteractionExample;
 import sample.client.examples.PerSeriesPropertiesExample;
@@ -213,6 +214,8 @@ public class SampleShell extends ResizeComposite {
         exampleInfos.add(new ExampleInfo("Linear Regressions",new LinearRegressionExample(),"linear-regression"));
         exampleInfos.add(new ExampleInfo("Edge Padding",new EdgePaddingExample(),"edge-padding"));
         exampleInfos.add(new ExampleInfo("Google Visualization Example",new GvizExample(),"gviz"));
+
+        exampleInfos.add(new ExampleInfo("Legend Formatter",new LegendFormatterExample(),"legend-formatter"));
     }
 
     @UiHandler("tabExample")

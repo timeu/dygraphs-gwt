@@ -10,6 +10,7 @@ import com.github.timeu.dygraphsgwt.client.callbacks.DataFunction;
 import com.github.timeu.dygraphsgwt.client.callbacks.DrawCallback;
 import com.github.timeu.dygraphsgwt.client.callbacks.DrawPointCallback;
 import com.github.timeu.dygraphsgwt.client.callbacks.HighlightCallback;
+import com.github.timeu.dygraphsgwt.client.callbacks.LegendFormatterCallback;
 import com.github.timeu.dygraphsgwt.client.callbacks.PointClickCallback;
 import com.github.timeu.dygraphsgwt.client.callbacks.UnHighlightCallback;
 import com.github.timeu.dygraphsgwt.client.callbacks.UnderlayCallback;
@@ -417,6 +418,15 @@ public class DygraphsOptions {
      */
     public boolean animatedZooms;
 
+
+    /**
+     * Set this to supply a custom formatter for the legend.
+     * See <a href=\"https://github.com/danvk/dygraphs/pull/683\">this comment</a> and
+     * the <a href=\"tests/legend-formatter.html\">legendFormatter demo</a> for usage.
+     *
+     * (Default: null)
+     */
+    public LegendFormatterCallback legendFormatter;
 
     /**
      * Usually, when Dygraphs encounters a missing value in a data series, it interprets this as a gap and draws it as such.

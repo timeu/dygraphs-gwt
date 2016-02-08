@@ -66,4 +66,6 @@ public interface DygraphsJs {
     Area getArea();
 
     void drawGraph_();
+
+    String[] getLabels();
 }

@@ -35,7 +35,14 @@
 /* global Dygraph:false */
 'use strict';
 
-Dygraph.synchronize = function(/* dygraphs..., opts */) {
+var Dygraph;
+if (window.Dygraph) {
+  Dygraph = window.Dygraph;
+} else if (typeof(module) !== 'undefined') {
+  Dygraph = require('../dygraph');
+}
+
+var synchronize = function(/* dygraphs..., opts */) {
   if (arguments.length === 0) {
     throw 'Invalid invocation of Dygraph.synchronize(). Need >= 1 argument.';
   }
@@ -50,7 +57,7 @@ Dygraph.synchronize = function(/* dygraphs..., opts */) {
   var prevCallbacks = [];
 
   var parseOpts = function(obj) {
-    if (typeof(obj) !== 'object' && !(obj instanceof Object)) {
+    if (!(obj instanceof Object)) {
       throw 'Last argument must be either Dygraph or Object.';
     } else {
       for (var i = 0; i < OPTIONS.length; i++) {
@@ -170,7 +177,7 @@ function attachZoomHandlers(gs, syncOpts, prevCallbacks) {
         }
         block = false;
       }
-    }, false /* no need to redraw */);
+    }, true /* no need to redraw */);
   }
 }
 
@@ -213,8 +220,10 @@ function attachSelectionHandlers(gs, prevCallbacks) {
         }
         block = false;
       }
-    });
+    }, true /* no need to redraw */);
   }
 }
+
+Dygraph.synchronize = synchronize;
 
 })();

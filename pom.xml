@@ -115,7 +115,7 @@
           <plugin>
           <groupId>net.ltgt.gwt.maven</groupId>
           <artifactId>gwt-maven-plugin</artifactId>
-          <version>1.0-rc-4</version>
+          <version>1.0-rc-6</version>
           <extensions>true</extensions>
           <configuration>
               <startupUrls>
@@ -131,6 +131,8 @@
               <codeserverArgs>
                   <arg>-generateJsInteropExports</arg>
                   <arg>-incremental</arg>
+                  <arg>-logLevel</arg>
+                  <arg>TRACE</arg>
               </codeserverArgs>
               <launcherDir>${project.build.directory}/gwt/launcherDir</launcherDir>
               <moduleName>${gwt.module}</moduleName>
