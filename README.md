@@ -5,10 +5,23 @@ Dygraphs-GWT is a wrapper for the [dygraphs][0] chart library.
 The wrapper makes it easy to use dygraphs in any GWT application by providing a
 type-safe abstraction of the dygraphs API. 
 
+
 ## How do I use it?
 
-TODO
+Following steps are required:  
 
+```JAVA
+GeneViewer geneviewer = new GeneViewer();
+geneviewer.load(new Runnable() {
+   @Override
+   public void run() {
+       GWT.log("GeneViewer loaded");
+       // Interact with sketch
+       JsArrayMixed data = getData();
+       geneviewer.setGeneData(data);
+   }
+});
+```
 
 
 ## How do I install it?
@@ -24,7 +37,16 @@ section:
     </dependency>
 ```
 
-You can also download the [jar][1] directly or check out the source using git
+GeneViewer uses [GWT 2.8's][1] new [JSInterop feature][2] and thus it has to be enabled in the GWT compiler args.
+For maven:
+```xml
+<compilerArgs>
+    <compilerArg>-generateJsInteropExports</compilerArg>
+</compilerArgs>
+```
+or passing it to the compiler via `-generateJsInteropExports`
+
+You can also download the [jar][3] directly or check out the source using git
 from <https://github.com/timeu/dygraphs-gwt.git> and build it yourself. Once
 you've installed Dygraphs-GWT, be sure to inherit the module in your .gwt.xml
 file like this:
@@ -35,10 +57,11 @@ file like this:
 
 ## Where can I learn more?
 
- * For more details on the Dygraphs-GWT API, consult the [Javadoc][2].
- * Check out the [sample app][3] for a full example of using Dygraphs-GWT.
+ * Check out the [sample app][4] ([Source Code][5]) for a full example of using GeneViewer.
  
 [0]: https://http://dygraphs.com/
-[1]: http://search.maven.org/remotecontent?filepath=com/github/timeu/dygraphs-gwt/dygraphs-gwt/1.0.0/dygraphs-gwt-1.0.0.jar
-[2]: http://timeu.github.io/dygraphs-gwt/javadoc/
-[3]: https://github.com/timeu/dygraphs-gwt/tree/master/dygraphs-gwt-sample/src/main/java/sample/client
+[1]: http://www.gwtproject.org/release-notes.html#Release_Notes_2_8_0_BETA1
+[2]: https://docs.google.com/document/d/10fmlEYIHcyead_4R1S5wKGs1t2I7Fnp_PaNaa7XTEk0/edit#heading=h.o7amqk9edhb9
+[3]: https://github.com/timeu/dygraphs-gwt/releases
+[4]: http://timeu.github.io/dygraphs-gwt
+[5]: https://github.com/timeu/dygraphs-gwt/tree/master/dygraphs-gwt-sample/src/main/java/sample/client
