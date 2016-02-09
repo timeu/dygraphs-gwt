@@ -8,19 +8,33 @@ type-safe abstraction of the dygraphs API.
 
 ## How do I use it?
 
-Following steps are required:  
+Following dygraphjs example:
+
+```Javascript
+new Dygraph(div, "ny-vs-sf.txt", {
+  legend: 'always',
+  title: 'NYC vs. SF',
+  showRoller: true,
+  rollPeriod: 14,
+  customBars: true,
+  ylabel: 'Temperature (F)',
+});
+```
+can be done with the wrapper this way:
 
 ```JAVA
-GeneViewer geneviewer = new GeneViewer();
-geneviewer.load(new Runnable() {
-   @Override
-   public void run() {
-       GWT.log("GeneViewer loaded");
-       // Interact with sketch
-       JsArrayMixed data = getData();
-       geneviewer.setGeneData(data);
-   }
-});
+
+DygraphsOptions options = new DygraphsOptions();
+options.legend='always'
+options.title='NYC vs. SF'
+options.showRoller = true;
+options.rollPeriod = 14;
+options.customBars = true;
+options.ylabel = 'Temperature (F)'
+
+Dygraphs dygraphs = new Dygraphs("ny-vs-sf.txt",options);
+somePanel.add(dygraphs);
+
 ```
 
 
