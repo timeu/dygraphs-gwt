@@ -135,6 +135,11 @@ public class AxisOptions {
             return this;
         }
 
+        public Builder valueFormatter(ValueFormatter valueFormatter) {
+            this.options.valueFormatter = valueFormatter;
+            return this;
+        }
+
         public AxisOptions build() {
             return options;
         }

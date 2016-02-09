@@ -23,5 +23,5 @@ public interface ValueFormatter {
      * @param row The row of the data from which this point comes. g.getValue(row, 0) will return the x-value for this point.
      * @param col The column of the data from which this point comes. g.getValue(row, col) will return the original y-value for this point. This can be used to get the full confidence interval for the point, or access un-rolled values for the point.
      */
-    void onValueFormatter(long value,OptFunction opts,String seriesName,DygraphsJs dygraphjs,int row,int col);
+    String onValueFormatter(long value,OptFunction opts,String seriesName,DygraphsJs dygraphjs,int row,int col);
 }
