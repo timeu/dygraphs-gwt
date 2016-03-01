@@ -1,5 +1,6 @@
 package com.github.timeu.dygraphsgwt.client.callbacks;
 
+import com.google.gwt.dom.client.NativeEvent;
 import com.google.gwt.event.dom.client.MouseEvent;
 import jsinterop.annotations.JsFunction;
 
@@ -15,5 +16,5 @@ public interface PointClickCallback {
      * @param event Mousevent
      * @param point Point that was clicked
      */
-    void onClick(MouseEvent event,Point point);
+    void onClick(NativeEvent event, Point point);
 }
