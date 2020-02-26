@@ -9,6 +9,7 @@
   <artifactId>dygraphs-gwt</artifactId>
   <packaging>gwt-lib</packaging>
   <name>Dygraphs-GWT</name>
+  <description>GWT wrapper for Dygraphs (Core Library)</description>
 
   <build>
     <plugins>

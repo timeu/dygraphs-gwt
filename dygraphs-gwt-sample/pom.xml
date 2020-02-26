@@ -8,8 +8,8 @@
 
   <artifactId>dygraphs-gwt-sample</artifactId>
   <packaging>gwt-app</packaging>
-
   <name>Dygraphs-GWT Sample Application</name>
+  <description>GWT wrapper for Dygraphs (Sample App)</description>
 
   <build>
     <plugins>
