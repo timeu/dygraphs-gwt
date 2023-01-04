@@ -73,7 +73,7 @@ file like this:
 
  * Check out the [sample app][4] ([Source Code][5]) for a full example of using GeneViewer.
  
-[0]: https://http://dygraphs.com/
+[0]: https://dygraphs.com/
 [1]: http://www.gwtproject.org/release-notes.html#Release_Notes_2_8_0_BETA1
 [2]: https://docs.google.com/document/d/10fmlEYIHcyead_4R1S5wKGs1t2I7Fnp_PaNaa7XTEk0/edit#heading=h.o7amqk9edhb9
 [3]: https://github.com/timeu/dygraphs-gwt/releases
